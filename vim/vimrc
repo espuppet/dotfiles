@@ -1,10 +1,10 @@
 """"""""""""""""""""""""""""""""""
-" Desc1984's vimrc
+" vim main config file
 "
 " Version
-"   1.5
+"   1.6
 " Update Time
-"   2013.05.11
+"   2013.09.03
 "
 " Wish you have a good vim tour!
 """"""""""""""""""""""""""""""""""
@@ -27,19 +27,26 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-"When .vimrc is edited, reload it
-autocmd! bufwritepost .vimrc source ~/.vimrc 
-
 " Turn backup off
 set nobackup
 set nowb
 set noswapfile
+set directory-=.
 
 " Set autopath
 autocmd! BufWinEnter *    lcd %:p:h
 
-"Set mapleader
+" Set mapleader
 let mapleader = ","
+
+" fix broken backspaces
+set backspace=2
+
+"
+set backupcopy=yes
+
+"yank and paste with the system clipboard
+set clipboard=unnamed
 
 " System
 if(has("win32") || has("win95") || has("win64") || has("win16"))
@@ -61,15 +68,15 @@ else
     autocmd! bufwritepost _vimrc source ~/_vimrc 
 endif
 
-
 """""""""""""""""""""""
 "  VIM user interface "
 """""""""""""""""""""""
-" Turn on the WiLd menu
+" Turn on the Wild menu
 set wildmenu
+set wildmode=longest,list,full
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*~,*.pyc,tmp/**
 
 "Always show current position
 set ruler
@@ -80,13 +87,29 @@ set cmdheight=2
 "show matching bracket for 0.2 seconds
 set matchtime=2
 
+" case-insensitive search
+set ignorecase
+
+" search as you type
+set incsearch
+
+" case-sensitive search if any cpas
+set smartcase
+
+"Enable basic mouse behavior such as resizing buffers.
+set mouse=a
+if exists('$TMUX')  " Support resizing in tmux
+  set ttymouse=xterm2
+endif
+
 """"""""""""""""
 "  Color&View  "
 """"""""""""""""
 " Enable syntax highlighting
 syntax enable
-syntax on
+"syntax on
 
+" Highlight current cursor line
 set cursorline
 
 "close gui
@@ -103,12 +126,12 @@ else
         "color koehler
         colorscheme blackboard
     else
-        colorscheme koehler
+        "colorscheme koehler
+        colorscheme desert
         "colorscheme blackboard
-        let g:solarized_termcolors=256
+        "let g:solarized_termcolors=256
     endif
 
-    "set background=dark
     "colorscheme solarized
     set guifont=DejaVu\ Sans\ Mono\ 12
     "set guifontwide=文泉驿等宽微米黑\ 13
@@ -133,12 +156,12 @@ set hlsearch
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,chinese,latin-1
 
-if g:iswindows==1
-    set fileencoding=chinese
-    set termencoding=GBK
-else
-    set fileencoding=utf-8
-endif
+"if g:iswindows==1
+"    set fileencoding=chinese
+"    set termencoding=GBK
+"else
+"    set fileencoding=utf-8
+"endif
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 "set langmenu=zh_CN.utf-8
@@ -150,6 +173,9 @@ source $VIMRUNTIME/menu.vim
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
+
+" show context above/below cursorline
+set scrolloff=3
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :nohl<cr>
@@ -164,7 +190,18 @@ map <C-l> <C-W>l
 map <leader>tn :tabnew<cr>
 map <leader>tc :tabclose<cr>
 
-" Configure backspace so it acts as it should act
+map <leader>l :Align
+nmap <leader>a :Ack
+nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>d :NERDTreeToggle<CR>
+nmap <leader>f :NERDTreeFind<CR>
+nmap <leader>t :CtrlP<CR>
+nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR><CR>
+nmap <leader>] :TagbarToggle<CR>
+nmap <leader><space> :call whitespace#strip_trailing()<CR>
+nmap <leader>g :GitGutterToggle<CR>
+nmap <leader>c <Plug>Kwbdbackspace so it acts as it should act
+
 "set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
@@ -174,6 +211,10 @@ set smartindent
 set shiftwidth=4
 set tabstop=4
 set expandtab
+
+" show trailing whitespace
+set list
+set listchars=tab:▸\ ,trail:▫
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -185,10 +226,11 @@ nmap <F5> "=strftime("%Y-%m-%d %H:%M:%S")<CR>P
 imap <F5> <C-R>=strftime("%c")<CR>
 
 """"""""""""""""
-"  Status line " 
+"  Status line "
 """"""""""""""""
 " Always show the status line
 set laststatus=2
+set showcmd
 
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ POS:\ %l,%v
@@ -241,10 +283,15 @@ nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-"""""""""""
-" Plugins "
-"""""""""""
-source ~/.vim/bundles.vim
+"""""""""""""""
+" local config"
+"""""""""""""""
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+if filereadable(expand("~/.vim/bundles.vim"))
+    source ~/.vim/bundles.vim
+endif
 
 """"""""""""""
 "  Functions "
