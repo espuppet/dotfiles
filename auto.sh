@@ -1,6 +1,6 @@
 #!/bin/sh
-# Auto Setup script 
-# 2013/08/05
+# Auto Setup script
+# 2013/09/05
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
@@ -18,17 +18,20 @@ sudo apt-get -y install vim tmux git python-pip python-virtualenv zsh curl pytho
 
 cd ~
 mkdir .vim
-mkdir Download workspace virtualenv github.com
+mkdir Download workspace
 cp -R goagent ~/Downloads/
 cd ~/workspace
-mkdir dotfiles
-cd ~/workspace/dotfiles
-git init
-git remote add origin /src/dotfiles/
-git pull origin master:master
-
-cp .vimrc ~
-cp .tmux.conf ~
+git clone git@github.com:espuppet/dotfiles.git
+#mkdir dotfiles
+#cd ~/workspace/dotfiles
+#git init
+#git remote add origin /src/dotfiles/
+#git pull origin master:master
+cd dotfiles
+ln -s ./vim/vimrc ~/.vimrc
+#cp .vimrc ~
+ln -s ./tmux.conf ~/.tmux.con
+#cp .tmux.conf ~
 cp bundles.vim ~/.vim
 
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
@@ -49,20 +52,20 @@ wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master
 #cd virtualenv-1.10
 #sudo python2.7 setup.py install
 
-if [ -s ~/.pip ]
-then
-    mkdir ~/.pip/
-fi
-
-if [ -s ~/.pip/pip.conf ]
-then
-sudo mv ~/.pip/pip.conf ~/.pip/pip.conf.bak
-fi
-cd $LOCATION
-cp pip.conf ~/.pip/
-
-sudo pip install pythonbrew
-cd ~/virtualenv
+#if [ -s ~/.pip ]
+#then
+#    mkdir ~/.pip/
+#fi
+#
+#if [ -s ~/.pip/pip.conf ]
+#then
+#sudo mv ~/.pip/pip.conf ~/.pip/pip.conf.bak
+#fi
+#cd $LOCATION
+#cp pip.conf ~/.pip/
+#
+#sudo pip install pythonbrew
+#cd ~/virtualenv
 #virtualenv pelican
 #source ~/virtualenv/pelican/bin/activate
 #pip install Markdown
@@ -79,10 +82,10 @@ source ~/.rvm/scripts/rvm
 sed -i 's!ftp.ruby-lang.org/pub/ruby!ruby.taobao.org/mirrors/ruby!' $rvm_path/config/db
 # 安装 readline 包
 rvm pkg install readline
-# 安装 Ruby 2.0.0
-rvm install 2.0.0 --with-readline-dir=$rvm_path/usr
+# 安装 Ruby 1.9.3
+rvm install 1.9.3 --with-readline-dir=$rvm_path/usr
 
-rvm 2.0.0 --default
+rvm 1.9.3 --default
 
 
 gem source -r https://rubygems.org/

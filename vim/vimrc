@@ -118,7 +118,7 @@ set go=
 if g:iswindows==1
     "colorscheme darkblue
     colorscheme blackboard
-    set guifont=Courier_New:h12:w6
+    set guifont=Courier_New:h14:w7
     "set guifontwide=NSimSun-18030,NSimSun
     set termencoding=GBK
 else
