@@ -8,7 +8,7 @@ systemctl enable bumblebeed.service
 
 #字体文档相关
 pacman -S wqy-microhei wget ibus-rime ttf-dejavu wine-mono
-pacman -S xmind
+pacman -S xmind zathura
 
 #编程相关
 pacman -S gvim git tmux zsh vim-systemd
@@ -16,8 +16,8 @@ git clone https://github.com/espuppet/dotfiles
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 
-#壁纸及网络相关
-pacman -S feh goagent flashplugin thunderbird
+#多媒体，壁纸及网络相关
+pacman -S feh goagent flashplugin thunderbird deadbeef libmad flac mplayer
 
 #AUR
 yaourt kingsoft-office ttf-microsoft-arial ttf-microsoft-yahei
