@@ -30,7 +30,7 @@ git clone git@github.com:espuppet/dotfiles.git
 cd dotfiles
 ln -s ./vim/vimrc ~/.vimrc
 #cp .vimrc ~
-ln -s ./tmux.conf ~/.tmux.con
+ln -s ./tmux.conf ~/.tmux.conf
 #cp .tmux.conf ~
 cp bundles.vim ~/.vim
 
