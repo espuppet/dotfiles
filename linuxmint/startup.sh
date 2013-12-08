@@ -7,8 +7,10 @@ export PATH
 
 LOCATION= pwd
 
+sudo add-apt-repository ppa:wiznote-team
+sudo add-apt-repository ppa:xorg-edger/ppa
 sudo apt-get update
-sudo apt-get -y install vim tmux git python-pip python-virtualenv zsh curl python-openssl unzip
+sudo apt-get -y install vim tmux git python-pip python-virtualenv zsh curl python-openssl unzip wiznote conky nvidia-331 nvidia-settings-331 bumblebee primus bumbebee-nvidia ibus-googlepinyin ibus-rime
 
 cd ~
 mkdir .vim
