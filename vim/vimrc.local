@@ -1,0 +1,26 @@
+if(has("win32") || has("win95") || has("win64") || has("win16"))
+    let g:iswindows=1
+else
+    let g:iswindows=0
+endif
+
+if(iswindows == 0)
+    map <silent> <leader>ss :source ~/.vimrc<cr>
+    map <silent> <leader>ee :e ~/.vimrc<cr>
+    autocmd! bufwritepost .vimrc source ~/.vimrc 
+    colorscheme blackboard
+    set guifont=DejaVu\ Sans\ Mono\ 12
+    set guifontwide=Wenquanyi\ Zen\ Hei\ 13
+    set termencoding=utf-8
+else
+    map <silent> <leader>ss :source ~/_vimrc<cr>
+    map <silent> <leader>ee :e ~/_vimrc<cr>
+    autocmd! bufwritepost _vimrc source ~/_vimrc 
+    if has("gui_running")
+        colorscheme blackboard
+    else
+        colorscheme desert
+    endif
+    set guifont=DejaVu_Sans_Mono:h13:w7
+    set termencoding=GBK
+endif
