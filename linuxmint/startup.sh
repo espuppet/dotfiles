@@ -24,3 +24,10 @@ cp ./vim/bundles.vim ~/.vim
 
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+
+ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+curl -L https://get.rvm.io | bash -s stable
+source ~/.rvm/scripts/rvm
+rvm install 2.0.0
+gem source -r https://rubygems.org/
+gem source -a http://ruby.taobao.org
