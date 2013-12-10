@@ -9,7 +9,12 @@ if(iswindows == 0)
     map <silent> <leader>ss :source ~/.vimrc<cr>
     map <silent> <leader>ee :e ~/.vimrc<cr>
     autocmd! bufwritepost .vimrc source ~/.vimrc
-    colorscheme koehler
+    if has("gui_running")
+        set background=dark
+        colorscheme solarized
+    else
+        colorscheme koehler
+    endif
     set guifont=DejaVu\ Sans\ Mono\ 12
     set guifontwide=Wenquanyi\ Micro\ Hei\ Mono\ 13
     set termencoding=utf-8
@@ -18,7 +23,7 @@ else
     map <silent> <leader>ee :e ~/_vimrc<cr>
     autocmd! bufwritepost _vimrc source ~/_vimrc 
     if has("gui_running")
-        colorscheme blackboard
+        colorscheme solarized
     else
         colorscheme desert
     endif
