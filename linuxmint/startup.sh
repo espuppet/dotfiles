@@ -12,7 +12,7 @@ sudo add-apt-repository ppa:xorg-edgers/ppa
 sudo add-apt-repository ppa:fingerprint/fingerprint-gui
 sudo add-apt-repository ppa:bumblebee/stable
 sudo apt-get update
-sudo apt-get install vim tmux git python-pip python-virtualenv zsh curl python-openssl unzip wiznote conky ibus-googlepinyin ibus-rime libbsapi policykit-1-fingerprint-gui fingerprint-gui xterm redshift
+sudo apt-get install vim tmux git python-pip python-virtualenv zsh curl python-openssl unzip wiznote conky ibus-googlepinyin ibus-rime libbsapi policykit-1-fingerprint-gui fingerprint-gui xterm redshift libnss3-tools flashplugin-nonfree
 
 cd ~
 if [ -f .vim]
@@ -30,6 +30,7 @@ echo "repos already existed"
 then
 mkdir repos
 fi
+sudo mkdir /usr/local/ca-certificates
 
 cd ~/repos/dotfiles/
 cp vimrc ~/.vimrc

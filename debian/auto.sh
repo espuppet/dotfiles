@@ -12,27 +12,25 @@ then
 sudo mv /etc/apt/sources.list /etc/apt/source.list.bak
 fi
 sudo cp ./sources.list /etc/apt/
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com C1289A29
 
 sudo apt-get update
-sudo apt-get -y install vim tmux git python-pip python-virtualenv zsh curl python-openssl unzip
+sudo apt-get -y install vim tmux git python-pip python-virtualenv zsh curl python-openssl unzip xterm firmware-iwlwifi firmware-realtek ttf-wqy-microhei ttf-dejavu openbox tint2 conky fcitx feh firefox-mozilla-build thunderbird-mozilla-build
 
 cd ~
 mkdir .vim
-mkdir Download workspace
-cp -R goagent ~/Downloads/
+mkdir Downloads workspace
 cd ~/workspace
-git clone git@github.com:espuppet/dotfiles.git
 #mkdir dotfiles
 #cd ~/workspace/dotfiles
 #git init
 #git remote add origin /src/dotfiles/
 #git pull origin master:master
 cd dotfiles
-ln -s ./vim/vimrc ~/.vimrc
-#cp .vimrc ~
-ln -s ./tmux.conf ~/.tmux.conf
-#cp .tmux.conf ~
-cp bundles.vim ~/.vim
+cp ./vimrc ~/.vimrc
+cp ./vimrc.local ~/.vimrc.local
+cp ./vimrc.bundles ~/.vimrc.bundles
+cp ./tmux.conf ~/.tmux.conf
 
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh

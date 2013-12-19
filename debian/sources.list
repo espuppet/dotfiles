@@ -1,4 +1,6 @@
-deb http://mirrors.ustc.edu.cn/debian/ squeeze main non-free contrib
-deb http://mirrors.ustc.edu.cn/debian/ squeeze-proposed-updates main non-free contrib
-deb-src http://mirrors.ustc.edu.cn/debian/ squeeze main non-free contrib
-deb-src http://mirrors.ustc.edu.cn/debian/ squeeze-proposed-updates main non-free contrib 
+deb http://202.38.95.110/debian/ wheezy main non-free contrib
+deb http://202.38.95.110/debian/ wheezy-proposed-updates main non-free contrib
+deb-src http://202.38.95.110/debian/ wheezy main non-free contrib
+deb-src http://202.38.95.110/debian/ wheezy-proposed-updates main non-free contrib 
+
+deb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main
