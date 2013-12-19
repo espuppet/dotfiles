@@ -13,9 +13,10 @@ sudo mv /etc/apt/sources.list /etc/apt/source.list.bak
 fi
 sudo cp ./sources.list /etc/apt/
 sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com C1289A29
+sudo apt-get remove iceweasel
 
 sudo apt-get update
-sudo apt-get -y install vim tmux git python-pip python-virtualenv zsh curl python-openssl unzip xterm firmware-iwlwifi firmware-realtek ttf-wqy-microhei ttf-dejavu openbox tint2 conky fcitx feh firefox-mozilla-build thunderbird-mozilla-build
+sudo apt-get -y install vim tmux git python-pip python-virtualenv zsh curl python-openssl unzip xterm firmware-iwlwifi firmware-realtek ttf-wqy-microhei ttf-dejavu openbox tint2 conky fcitx feh xcompmgr gdebi
 
 cd ~
 mkdir .vim
@@ -35,6 +36,8 @@ cp ./tmux.conf ~/.tmux.conf
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 
+# fcitx
+sudo apt-get install cmake build-essential firefox-mozilla-build thunderbird-mozilla-build
 #cd ~/github.com/
 #git clone http://github.com/goagent/goagent
 #cd ~/Download/
