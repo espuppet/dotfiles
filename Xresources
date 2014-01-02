@@ -70,7 +70,7 @@ xterm*background:              S_base03
 *color15:                 S_base3
 
 xterm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=15
-xterm*faceNameDoublesize: Wenquanyi Bitmap Song:pixelsize=15:antialias=True
+xterm*faceNameDoublesize: Wenquanyi Micro Hei Mono:pixelsize=15:antialias=True
 
 xterm.termName:xterm-256color
 xterm.title:    Xterm

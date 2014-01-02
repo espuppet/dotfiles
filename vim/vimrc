@@ -31,7 +31,7 @@ set autoread
 set nobackup
 set nowb
 set noswapfile
-set directory-=.
+set dir-=.
 
 " Set autopath
 autocmd! BufWinEnter *    lcd %:p:h
@@ -42,7 +42,7 @@ let mapleader = ","
 " fix broken backspaces
 set backspace=2
 
-"
+" see crontab
 set backupcopy=yes
 
 "yank and paste with the system clipboard
@@ -135,7 +135,7 @@ else
     "colorscheme solarized
     set guifont=DejaVu\ Sans\ Mono\ 12
     "set guifontwide=文泉驿等宽微米黑\ 13
-    set guifontwide=Wenquanyi\ Zen\ Hei\ 13
+    set guifontwide=Wenquanyi\ Micro\ Hei\ Mono\ 13
     set termencoding=utf-8
 endif
 
