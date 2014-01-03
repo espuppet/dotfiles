@@ -24,6 +24,7 @@ sudo apt-get -y install vim tmux git python-pip python-virtualenv zsh curl pytho
 # nvidia drivers & bumblebee
 sudo aptitude -r install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') nvidia-kernel-dkms
 sudo apt-get install -y bumblebee-nvidia primus
+sudo usermod -a -G bumblebee $USER
 
 cd ~
 mkdir Downloads workspace
