@@ -1,3 +1,3 @@
 dpkg --add-architecture i386
-sudo aptitude install multiarch-support
-sudo aptitude install 
+aptitude update
+sudo aptitude install libgl1-nvidia-glx:i386 jockey-common multiarch-support

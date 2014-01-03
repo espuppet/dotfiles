@@ -5,5 +5,7 @@ deb-src http://202.38.95.110/debian/ wheezy-proposed-updates main non-free contr
 
 deb http://202.38.95.110/debian/ wheezy-backports main non-free contrib
 deb-src http://202.38.95.110/debian/ wheezy-backports main non-free contrib
-#deb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main
 deb http://packages.linuxmint.com debian import
+
+#deb http://ppa.launchpad.net/fingerprint/fingerprint-gui/ubuntu precise main
+#deb-src http://ppa.launchpad.net/fingerprint/fingerprint-gui/ubuntu precise main

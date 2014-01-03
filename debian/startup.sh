@@ -5,31 +5,30 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-LOCATION= pwd
+LOCATION=$(pwd)
 
-if [ -s /etc/apt/sources.list ]
-then
-mv /etc/apt/sources.list /etc/apt/source.list.bak
-fi
-cp ./sources.list /etc/apt/
-apt-key adv --recv-keys --keyserver keyserver.ubuntu.com C1289A29
-apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 3EE67F3D0FF405B2
-#sudo add-apt-repository ppa:wiznote-team
-#sudo add-apt-repository ppa:xorg-edgers/ppa
+#if [ -s /etc/apt/sources.list ]
+#then
+#mv /etc/apt/sources.list /etc/apt/sources.list.bak
+#fi
+#cp ./sources.list /etc/apt/
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com C1289A29
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 3EE67F3D0FF405B2
+#fingerprint
+#apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2F20733F
 #sudo add-apt-repository ppa:fingerprint/fingerprint-gui
-#sudo apt-get remove iceweasel
 
-apt-get update
-apt-get -y install vim tmux git python-pip python-virtualenv zsh curl python-openssl unzip xterm firmware-iwlwifi firmware-realtek ttf-wqy-microhei ttf-dejavu openbox tint2 conky fcitx fcitx-pinyin fcitx-googlepinyin feh xcompmgr gdebi gnome-tweak-tool redshift flashplugin-nonfree
+sudo apt-get update
+sudo apt-get -y install vim tmux git python-pip python-virtualenv zsh curl python-openssl unzip xterm firmware-iwlwifi firmware-realtek ttf-wqy-microhei ttf-dejavu openbox tint2 conky fcitx fcitx-pinyin fcitx-googlepinyin feh xcompmgr gdebi gnome-tweak-tool redshift flashplugin-nonfree libnss3-tools cmake build-essential mono-devel gparted
 
-aptitude -r install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') nvidia-kernel-dkms
-apt-get install -y bumblebee-nvidia primus
+# nvidia drivers & bumblebee
+sudo aptitude -r install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') nvidia-kernel-dkms
+sudo apt-get install -y bumblebee-nvidia primus
 
 cd ~
 mkdir Downloads workspace
-cd ~/repos
-#mkdir dotfiles
-cd dotfiles
+cd $LOCATION
+cd ..
 cp ./vimrc ~/.vimrc
 cp ./vimrc.local ~/.vimrc.local
 cp ./vimrc.bundles ~/.vimrc.bundles
@@ -41,8 +40,9 @@ cp ./redshift.conf ~/.config/
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 
-# fcitx
-sudo apt-get -y install cmake build-essential firefox
+sudo dpkg --add-architecture i386
+sudo apt-get install -y libgl1-nvidia-glx:i386 jockey-common
+sudo apt-get install -y firefox thunderbird
 
 #cd ~/Download/
 #wget -c https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
