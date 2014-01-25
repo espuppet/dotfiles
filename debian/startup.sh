@@ -19,7 +19,7 @@ sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 3EE67F3D0FF405B2
 #sudo add-apt-repository ppa:fingerprint/fingerprint-gui
 
 sudo apt-get update
-sudo apt-get -y install vim tmux git python-pip python-virtualenv zsh curl python-openssl unzip xterm firmware-iwlwifi firmware-realtek ttf-wqy-microhei ttf-dejavu openbox tint2 conky fcitx fcitx-pinyin fcitx-googlepinyin feh xcompmgr gdebi gnome-tweak-tool redshift flashplugin-nonfree libnss3-tools cmake build-essential mono-devel gparted
+sudo apt-get -y install vim tmux git python-pip python-virtualenv zsh curl python-openssl unzip xterm firmware-iwlwifi firmware-realtek ttf-wqy-microhei ttf-dejavu openbox tint2 conky fcitx fcitx-pinyin fcitx-googlepinyin feh xcompmgr gdebi gnome-tweak-tool redshift flashplugin-nonfree libnss3-tools cmake build-essential mono-devel gparted ctags cscope
 
 # nvidia drivers & bumblebee
 sudo aptitude -r install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') nvidia-kernel-dkms
