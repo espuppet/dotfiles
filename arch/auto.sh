@@ -11,7 +11,7 @@ pacman -S wqy-microhei wget ibus-rime ttf-dejavu wine-mono fcitx-im fcitx-config
 pacman -S xmind zathura
 
 #编程相关
-pacman -S gvim git tmux zsh vim-systemd
+pacman -S gvim git tmux zsh vim-systemd cscope ctags
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 
