@@ -16,7 +16,7 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 
 #多媒体，壁纸及网络相关
-pacman -S feh flashplugin thunderbird deadbeef libmad flac mplayer shadowsocks python2-gevent
+pacman -S feh flashplugin thunderbird deadbeef libmad flac mplayer shadowsocks python3-gevent python2-setuptools
 pacman -S goagent
 
 #AUR
