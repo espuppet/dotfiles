@@ -21,5 +21,6 @@ pacman -S goagent
 
 #AUR
 pacman -S base-devel fakeroot
-yaourt kingsoft-office ttf-microsoft-arial ttf-microsoft-yahei
-yaourt lovewallpaper-hd xflux
+yaourt -S keepassx2
+yaourt -S kingsoft-office ttf-microsoft-arial ttf-microsoft-yahei
+yaourt -S lovewallpaper-hd xflux
