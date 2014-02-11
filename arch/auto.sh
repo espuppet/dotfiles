@@ -20,7 +20,7 @@ pacman -S feh flashplugin thunderbird deadbeef libmad flac mplayer shadowsocks p
 pacman -S goagent
 
 #AUR
-pacman -S base-devel fakeroot
+pacman -S base-devel fakeroot libtinfo
 yaourt -S keepassx2
 yaourt -S kingsoft-office ttf-microsoft-arial ttf-microsoft-yahei
 yaourt -S lovewallpaper-hd xflux
