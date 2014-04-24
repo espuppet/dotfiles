@@ -10,8 +10,9 @@ if(iswindows == 0)
     map <silent> <leader>ee :e ~/.vimrc<cr>
     autocmd! bufwritepost .vimrc source ~/.vimrc
     if has("gui_running")
-        set background=dark
-        colorscheme solarized
+        "set background=dark
+        "colorscheme solarized
+        colorscheme molokai
     else
         colorscheme koehler
     endif
