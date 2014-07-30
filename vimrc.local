@@ -14,7 +14,10 @@ if(iswindows == 0)
         "colorscheme solarized
         colorscheme molokai
     else
-        colorscheme koehler
+        colorscheme molokai
+        let g:rehash256=1
+        let g:molokai_original=1
+        "colorscheme koehler
     endif
     set guifont=DejaVu\ Sans\ Mono\ 11
     set guifontwide=Wenquanyi\ Micro\ Hei\ Mono\ 12
@@ -24,9 +27,13 @@ else
     map <silent> <leader>ee :e ~/_vimrc<cr>
     autocmd! bufwritepost _vimrc source ~/_vimrc 
     if has("gui_running")
-        colorscheme solarized
+        "colorscheme solarized
+        colorscheme molokai
     else
-        colorscheme desert
+        "colorscheme desert
+        colorscheme molokai
+        let g:rehash256=1
+        let g:molokai_original=1
     endif
     set guifont=DejaVu_Sans_Mono:h13:w7
     set termencoding=GBK
