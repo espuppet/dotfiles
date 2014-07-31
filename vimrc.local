@@ -39,6 +39,8 @@ else
     set termencoding=GBK
 endif
 
+let g:ctrlp_extensions = ['tag']
+
 " plugin key map
 nmap <leader>f :NERDTreeToggle<CR>
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>

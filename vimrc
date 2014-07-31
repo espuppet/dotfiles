@@ -35,7 +35,7 @@ endif
 
 " dir
 set dir-=.
-autocmd! BufWinEnter * lcd %:p:h
+"autocmd! BufWinEnter * lcd %:p:h
 
 " indent & tab
 set autoindent
@@ -100,4 +100,7 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 if filereadable(expand("~/.vimrc.bundles"))
     source ~/.vimrc.bundles
+endif
+if filereadable(expand("~/cscope_maps.vim"))
+    source ~/cscope_maps.vim
 endif
