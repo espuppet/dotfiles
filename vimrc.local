@@ -39,13 +39,15 @@ else
     set termencoding=GBK
 endif
 
-let g:ctrlp_extensions = ['tag']
-
 " plugin key map
+
 nmap <leader>f :NERDTreeToggle<CR>
+
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR
+
+nmap <leader>b :CtrlPBuffer<CR>
 
 let g:vimim_mode = 'dynamic'
 let g:vimim_plugin = '/home/vagrant/.vim/bundle/VimIM/plugin'
@@ -54,3 +56,4 @@ let g:vimim_punctuation = 2
 "let g:vimim_map = ''
 "let g:vimim_cloud = 'baidu,sogou,qq,google'
 "let g:vimim_toggle = 'baidu,sogou,qq,google'
+"
