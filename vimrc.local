@@ -42,6 +42,7 @@ endif
 " plugin key map
 
 nmap <leader>f :NERDTreeToggle<CR>
+let g:NERDTreeChDirMode=2
 
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
