@@ -2,7 +2,7 @@
 " espuppet's vim config file"
 "                           "
 " Version       2.0         "
-" Update Time:  2013.12.09  "
+" Update Time:  2015.02.11  "
 """""""""""""""""""""""""""""
 
 set nocompatible
@@ -20,11 +20,9 @@ set go=
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,chinese,latin-1
 colorscheme koehler
-set t_Co=256
-"set guifont=DejaVu\ Sans\ Mono\ 11
-set guifont=YaHeiConsolasHybrid\11
-set guifontwide=Wenquanyi\ Micro\ Hei\ Mono\ 12
-set termencoding=utf-8
+"set guifont=DejaVu_Sans_Mono:h13:w7
+set guifont=YaHei_Consolas_Hybrid:h13:w7
+set termencoding=GBK
 " show trailing whitespace
 set list
 set listchars=tab:\|\ ,trail:-
@@ -100,14 +98,11 @@ set omnifunc=syntaxcomplete
 "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 "autocmd FileType c setlocal omnifunc=ccomplete#Complete
 
-map <silent> <leader>ss :source ~/.vimrc<cr>
-map <silent> <leader>ee :e ~/.vimrc<cr>
-autocmd! bufwritepost .vimrc source ~/.vimrc
+map <silent> <leader>ss :source ~/_gvimrc<cr>
+map <silent> <leader>ee :e ~/_gvimrc<cr>
+autocmd! bufwritepost _gvimrc source ~/_gvimrc
 
 " extension
 if filereadable(expand("~/.vimrc.bundles"))
     source ~/.vimrc.bundles
-endif
-if filereadable(expand("~/cscope_maps.vim"))
-    source ~/cscope_maps.vim
 endif

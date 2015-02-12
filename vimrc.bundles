@@ -9,25 +9,44 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-fugitive'
-"Bundle 'ervandew/supertab'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'ervandew/supertab'
+Bundle 'majutsushi/tagbar'
+Bundle 'davidhalter/jedi-vim'
+"Bundle 'Valloric/YouCompleteMe'
+"Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'tpope/vim-surround'
 Bundle 'sjl/gundo.vim'
-Bundle 'yonchu/accelerated-smooth-scroll'
 Bundle 'spiiph/vim-space'
 Bundle 'bling/vim-airline'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tomasr/molokai'
-Bundle 'myusuf3/numbers.vim'
-"Bundle 'Valloric/YouCompleteMe'
 "Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Yggdroot/indentLine'
 Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'vimwiki'
-Bundle 'VimIM'
+"Bundle 'vimwiki'
+"Bundle 'VimIM'
 Bundle 'a.vim'
 "Bundle 'AutoComplPop'
-Bundle 'matchit.zip'
+"Bundle 'matchit.zip'
 
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+if has("gui_running")
+    "colorscheme solarized
+    colorscheme molokai
+else
+    colorscheme molokai
+    let g:rehash256=1
+    let g:molokai_original=1
+endif
+
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 let g:solarized_termcolors=256
+
+nmap <leader>f :NERDTreeToggle<CR>
+let g:NERDTreeChDirMode=2
+
+nmap <leader>b :CtrlPBuffer<CR>
+
+let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
