@@ -12,10 +12,9 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'ervandew/supertab'
 Bundle 'majutsushi/tagbar'
-Bundle 'davidhalter/jedi-vim'
+"Bundle 'davidhalter/jedi-vim'
 Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'Valloric/YouCompleteMe'
-"Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'tpope/vim-surround'
 Bundle 'sjl/gundo.vim'
 Bundle 'spiiph/vim-space'
@@ -26,7 +25,7 @@ Bundle 'tomasr/molokai'
 Bundle 'Yggdroot/indentLine'
 Bundle 'hynek/vim-python-pep8-indent'
 "Bundle 'vimwiki'
-"Bundle 'VimIM'
+Bundle 'VimIM'
 Bundle 'a.vim'
 "Bundle 'AutoComplPop'
 "Bundle 'matchit.zip'
@@ -41,6 +40,9 @@ else
 endif
 
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+let g:Vimim_cloud = 'qq,baidu'
+let g:Vimim_map='c-bslash'
 
 let g:solarized_termcolors=256
 
