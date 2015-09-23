@@ -24,9 +24,15 @@ Bundle 'tomasr/molokai'
 "Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Yggdroot/indentLine'
 Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'neilagabriel/vim-geeknote'
+Bundle 'xolox/vim-easytags'
+Bundle 'xolox/vim-misc'
+Bundle 'mileszs/ack.vim'
+Bundle 'klen/python-mode'
 "Bundle 'vimwiki'
 Bundle 'VimIM'
 Bundle 'a.vim'
+Bundle 'Mark'
 "Bundle 'AutoComplPop'
 "Bundle 'matchit.zip'
 
@@ -41,7 +47,7 @@ endif
 
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
-let g:Vimim_cloud = 'qq,baidu'
+let g:Vimim_cloud = 'baidu,qq'
 let g:Vimim_map='c-bslash'
 
 let g:solarized_termcolors=256
@@ -50,6 +56,9 @@ nmap <leader>f :NERDTreeToggle<CR>
 let g:NERDTreeChDirMode=2
 
 nmap <leader>b :CtrlPBuffer<CR>
+let g:ctrlp_extensions = ['tag']
 
 let g:SuperTabDefaultCompletionType = "context"
 "let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+
+let g:GeeknoteFormat="markdown"
