@@ -34,7 +34,7 @@
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(chinese-fonts-setup)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -157,13 +157,36 @@ before layers configuration."
   ;; User initialization goes here
     (setq-default dotspacemacs-themes '(monokai))
     (setq-default dotspacemacs-default-font '("Source Code Pro"
-                                              :size 13
+                                              :size 14
                                               :weight normal
                                               :width normal
                                               :powerline-scale 1.1))
     (setq org-startup-indented t)
     (if (file-directory-p "d:/babun/.babun/cygwin/bin/")
     (add-to-list 'exec-path "d:/babun/.babun/cygwin/bin/"))
+    (setq dynamic-library-alist
+        '((xpm "libXpm.dll")
+         (jpeg "jpeg62.dll")
+         (png "libpng3.dll" "libpng12.dll")
+         (xpm "libxpm.dll" "xpm4.dll" "libXpm-nox4.dll")))
+
+    (setq browse-url-browser-function 'w3m-browse-url)
+    (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+    ;; optional keyboard short-cut
+    (global-set-key "\C-xm" 'browse-url-at-point)
+
+    ;; soft tab
+    (setq-default indent-tabs-mode nil)
+    (setq-default tab-width 4)
+
+    ;; enable line wrapper
+    (global-visual-line-mode 1)
+
+    (setq-default dotspacemacs-default-font '("Source Code Pro"
+                                          :size 15
+                                          :weight normal
+                                          :width normal
+                                          :powerline-scale 1.1))
   )
 
 (defun dotspacemacs/config ()
