@@ -21,14 +21,15 @@
      ;; auto-completion
      ;; better-defaults
      emacs-lisp
-     ;; git
+     git
      ;; markdown
-     ;; org
+     org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; syntax-checking
      version-control
+     fonts
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -79,7 +80,7 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -154,45 +155,59 @@ before layers configuration."
    ;; Not used for now.
    dotspacemacs-default-package-repository nil
    )
-  ;; User initialization goes here
-    (setq-default dotspacemacs-themes '(monokai))
-    (setq-default dotspacemacs-default-font '("Source Code Pro"
-                                              :size 14
-                                              :weight normal
-                                              :width normal
-                                              :powerline-scale 1.1))
-    (setq org-startup-indented t)
-    (if (file-directory-p "d:/babun/.babun/cygwin/bin/")
-    (add-to-list 'exec-path "d:/babun/.babun/cygwin/bin/"))
-    (setq dynamic-library-alist
-        '((xpm "libXpm.dll")
-         (jpeg "jpeg62.dll")
-         (png "libpng3.dll" "libpng12.dll")
-         (xpm "libxpm.dll" "xpm4.dll" "libXpm-nox4.dll")))
+   ;; User initialization goes here
+   (setq-default dotspacemacs-themes '(monokai))
+   ;;(setq-default dotspacemacs-default-font '("Source Code Pro"
+   ;;                                          :size 14
+   ;;                                          :weight normal
+   ;;                                          :width normal
+   ;;                                          :powerline-scale 1.1))
+   ;;(setq org-startup-indented t)
+   ;;(if (file-directory-p "d:/babun/.babun/cygwin/bin/")
+   ;;(add-to-list 'exec-path "d:/babun/.babun/cygwin/bin/"))
+   ;;(setq dynamic-library-alist
+   ;;    '((xpm "libXpm.dll")
+   ;;     (jpeg "jpeg62.dll")
+   ;;     (png "libpng3.dll" "libpng12.dll")
+   ;;     (xpm "libxpm.dll" "xpm4.dll" "libXpm-nox4.dll")))
 
-    (setq browse-url-browser-function 'w3m-browse-url)
-    (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
-    ;; optional keyboard short-cut
-    (global-set-key "\C-xm" 'browse-url-at-point)
+   ;;(setq browse-url-browser-function 'w3m-browse-url)
+   ;;(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+   ;;;; optional keyboard short-cut
+   ;;(global-set-key "\C-xm" 'browse-url-at-point)
 
-    ;; soft tab
-    (setq-default indent-tabs-mode nil)
-    (setq-default tab-width 4)
+   ;; soft tab
+   (setq-default indent-tabs-mode nil)
+   (setq-default tab-width 4)
 
-    ;; enable line wrapper
-    (global-visual-line-mode 1)
+   ;; enable line wrapper
+   (global-visual-line-mode 1)
 
-    (setq-default dotspacemacs-default-font '("Source Code Pro"
-                                          :size 15
-                                          :weight normal
-                                          :width normal
-                                          :powerline-scale 1.1))
-  )
+   ;;(setq-default dotspacemacs-default-font '("Source Code Pro"
+   ;;                                      :size 14
+   ;;                                      :weight normal
+   ;;                                      :width normal
+   ;;                                      :powerline-scale 1.1))
+
+   ;;(when window-system
+   ;; ;; "CJK Unified Ideographs" (han) U+4E00 - U+9FFF
+   ;; (set-fontset-font "fontset-default"
+   ;;  (cons (decode-char 'ucs #x4e00)
+   ;;   (decode-char 'ucs #x9fff))
+   ;;  "-*-YaHei Consolas Hybrid-*-*-*-*-16-*-*-*-*-*-*-*")
+   ;;)
+)
 
 (defun dotspacemacs/config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+  ;; Make evil-mode up/down operate in screen lines instead of logical lines
+  (define-key evil-motion-state-map "j" 'evil-next-visual-line)
+  (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
+  ;; Also in visual mode
+  (define-key evil-visual-state-map "j" 'evil-next-visual-line)
+  (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
