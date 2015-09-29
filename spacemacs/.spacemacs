@@ -20,9 +20,9 @@
      ;; ----------------------------------------------------------------
      ;; auto-completion
      ;; better-defaults
-     emacs-lisp
+     ;;emacs-lisp
      git
-     ;; markdown
+     markdown
      org
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -30,6 +30,9 @@
      ;; syntax-checking
      version-control
      fonts
+     ;;deft
+     python
+     sql
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -80,7 +83,7 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -157,24 +160,33 @@ before layers configuration."
    )
    ;; User initialization goes here
    (setq-default dotspacemacs-themes '(monokai))
-   ;;(setq-default dotspacemacs-default-font '("Source Code Pro"
-   ;;                                          :size 14
-   ;;                                          :weight normal
-   ;;                                          :width normal
-   ;;                                          :powerline-scale 1.1))
+
    ;;(setq org-startup-indented t)
    ;;(if (file-directory-p "d:/babun/.babun/cygwin/bin/")
    ;;(add-to-list 'exec-path "d:/babun/.babun/cygwin/bin/"))
    ;;(setq dynamic-library-alist
    ;;    '((xpm "libXpm.dll")
-   ;;     (jpeg "jpeg62.dll")
-   ;;     (png "libpng3.dll" "libpng12.dll")
-   ;;     (xpm "libxpm.dll" "xpm4.dll" "libXpm-nox4.dll")))
+   ;;     (svg "librsvg-2-2.dll")
+   ;;     (jpeg "jpeg-9.dll" "jpeg62.dll" "zlib1.dll" "jpeg-62.dll" "jpeg.dll")
+   ;;     (png "libpng14-14.dll" "libpng14.dll" "libpng3.dll" "libpng12.dll")))
+   ;;(auto-image-file-mode t)
 
    ;;(setq browse-url-browser-function 'w3m-browse-url)
    ;;(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
    ;;;; optional keyboard short-cut
    ;;(global-set-key "\C-xm" 'browse-url-at-point)
+
+   ;; iimage mode
+   (autoload 'iimage-mode "iimage" "Support Inline image minor mode." t)
+   (autoload 'turn-on-iimage-mode "iimage" "Turn on Inline image minor mode." t)
+
+   (defun org-toggle-iimage-in-org ()
+    "display images in your org file"
+    (interactive)
+    (if (face-underline-p 'org-link)
+     (set-face-underline-p 'org-link nil)
+     (set-face-underline-p 'org-link t))
+    (iimage-mode))
 
    ;; soft tab
    (setq-default indent-tabs-mode nil)
@@ -183,32 +195,36 @@ before layers configuration."
    ;; enable line wrapper
    (global-visual-line-mode 1)
 
-   ;;(setq-default dotspacemacs-default-font '("Source Code Pro"
-   ;;                                      :size 14
-   ;;                                      :weight normal
-   ;;                                      :width normal
-   ;;                                      :powerline-scale 1.1))
-
-   ;;(when window-system
-   ;; ;; "CJK Unified Ideographs" (han) U+4E00 - U+9FFF
-   ;; (set-fontset-font "fontset-default"
-   ;;  (cons (decode-char 'ucs #x4e00)
-   ;;   (decode-char 'ucs #x9fff))
-   ;;  "-*-YaHei Consolas Hybrid-*-*-*-*-16-*-*-*-*-*-*-*")
-   ;;)
 )
 
 (defun dotspacemacs/config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+
   ;; Make evil-mode up/down operate in screen lines instead of logical lines
   (define-key evil-motion-state-map "j" 'evil-next-visual-line)
   (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+
+  ;;(setq deft-directory "~/deftNotes")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (sql-indent mmm-mode markdown-toc markdown-mode window-numbering which-key volatile-highlights vi-tilde-fringe use-package toc-org spray spacemacs-theme smooth-scrolling smeargle rainbow-delimiters quelpa pyvenv pytest pyenv-mode powerline popwin pip-requirements pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree move-text monokai-theme magit-gitflow linum-relative leuven-theme info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-descbinds helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-jumper evil-indent-textobject evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu diff-hl define-word cython-mode clean-aindent-mode chinese-fonts-setup buffer-move auto-highlight-symbol auto-dictionary anaconda-mode aggressive-indent adaptive-wrap ace-window ace-link))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C")))))
