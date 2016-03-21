@@ -58,6 +58,7 @@ autocmd BufReadPost *
 
 " key map
 let mapleader = ","
+noremap \ ,
 map j gj
 map k gk
 map <silent> <leader><cr> :nohl<cr>
