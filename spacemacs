@@ -17,4 +17,5 @@ you should place you code here."
   (setq default-buffer-file-coding-system 'utf-8-unix)
   (setq browse-url-browser-function 'eww-browse-url)
   (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+  (setq default-buffer-file-coding-system 'utf-8-unix)
 )

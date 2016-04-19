@@ -2,10 +2,8 @@
 " espuppet's vim config file"
 "                           "
 " Version       2.0         "
-" Update Time:  2013.12.09  "
+" Update Time:  2016.04.19  "
 """""""""""""""""""""""""""""
-
-set nocompatible
 
 " Dispaly
 set nu
@@ -20,7 +18,6 @@ set go=
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,chinese,latin-1
 colorscheme koehler
-set t_Co=256
 "set guifont=DejaVu\ Sans\ Mono\ 11
 set guifont=YaHeiConsolasHybrid\11
 set guifontwide=Wenquanyi\ Micro\ Hei\ Mono\ 12
@@ -33,7 +30,6 @@ source $VIMRUNTIME/menu.vim
 if has("gui_running")
     set guioptions-=T
     set guioptions+=e
-    set t_Co=256
     set guitablabel=%M\ %t
     set langmenu=en_US.utf-8
     language messages en_US.UTF-8
@@ -58,7 +54,6 @@ autocmd BufReadPost *
 
 " key map
 let mapleader = ","
-noremap \ ,
 map j gj
 map k gk
 map <silent> <leader><cr> :nohl<cr>
@@ -88,7 +83,6 @@ endif
 
 " backup
 set nobackup
-set nowritebackup
 set nowb
 set noswapfile
 
@@ -151,4 +145,13 @@ endif
 
 if filereadable(expand("~/cscope_maps.vim"))
     source ~/cscope_maps.vim
+endif
+
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
 endif

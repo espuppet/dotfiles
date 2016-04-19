@@ -1,0 +1,60 @@
+call plug#begin('~/.vim/bundle')
+"Plug 'gmarik/Vundle.vim'
+
+Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'}
+Plug 'jistr/vim-nerdtree-tabs', {'on' : 'NERDTreeToggle'}
+Plug 'Xuyuanp/git-nerdtree', {'on' : 'NERDTreeToggle'}
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/syntastic'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'fholgado/minibufexpl.vim'
+Plug 'ervandew/supertab'
+"Plug 'majutsushi/tagbar'
+"Plug 'davidhalter/jedi-vim'
+Plug 'Lokaltog/vim-easymotion'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-surround'
+"Plug 'sjl/gundo.vim'
+"Plug 'spiiph/vim-space'
+Plug 'bling/vim-airline'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'tomasr/molokai'
+Plug 'sickill/vim-monokai'
+"Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Yggdroot/indentLine'
+"Plug 'hynek/vim-python-pep8-indent'
+"Plug 'neilagabriel/vim-geeknote'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'mileszs/ack.vim'
+Plug 'klen/python-mode'
+"Plug 'vimwiki'
+"Plug 'VimIM'
+Plug 'a.vim'
+Plug 'Mark'
+"Plug 'AutoComplPop'
+"Plug 'matchit.zip'
+call plug#end()
+
+if has("gui_running")
+    "colorscheme solarized
+    "colorscheme molokai
+    colorscheme monokai
+else
+    "colorscheme molokai
+    colorscheme monokai
+    let g:rehash256=1
+    let g:molokai_original=1
+endif
+
+let g:solarized_termcolors=256
+
+nmap <leader>f :NERDTreeToggle<CR>
+let g:NERDTreeChDirMode=2
+
+nmap <leader>b :CtrlPBuffer<CR>
+let g:ctrlp_extensions = ['tag']
+
+let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
