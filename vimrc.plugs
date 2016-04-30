@@ -52,6 +52,9 @@ let g:solarized_termcolors=256
 
 nmap <leader>f :NERDTreeToggle<CR>
 let g:NERDTreeChDirMode=2
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 
 nmap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_extensions = ['tag']
