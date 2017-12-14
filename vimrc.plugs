@@ -22,6 +22,7 @@ Plug 'vim-airline/vim-airline'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'tomasr/molokai'
 Plug 'sickill/vim-monokai'
+Plug 'altercation/vim-colors-solarized'
 "Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Yggdroot/indentLine'
 "Plug 'hynek/vim-python-pep8-indent'
@@ -33,18 +34,19 @@ Plug 'klen/python-mode'
 Plug 'Tuxdude/mark.vim'
 "Plug 'vimwiki'
 "Plug 'VimIM'
-Plug 'a.vim'
+"Plug 'a.vim'
 "Plug 'AutoComplPop'
 "Plug 'matchit.zip'
 call plug#end()
 
 if has("gui_running")
-    "colorscheme solarized
+    colorscheme solarized
+    set background=light
     "colorscheme molokai
-    colorscheme monokai
 else
     "colorscheme molokai
-    colorscheme monokai
+    colorscheme solarized
+    set background=light
     let g:rehash256=1
     let g:molokai_original=1
 endif
