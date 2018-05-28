@@ -19,7 +19,7 @@ set laststatus=2
 set go=
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,chinese,latin-1
-colorscheme koehler
+"colorscheme koehler
 set t_Co=256
 "set guifont=DejaVu\ Sans\ Mono\ 11
 set guifont=YaHeiConsolasHybrid\11
