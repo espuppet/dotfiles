@@ -5,7 +5,8 @@ Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'}
 Plug 'jistr/vim-nerdtree-tabs', {'on' : 'NERDTreeToggle'}
 Plug 'Xuyuanp/git-nerdtree', {'on' : 'NERDTreeToggle'}
 Plug 'kien/ctrlp.vim'
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'fholgado/minibufexpl.vim'
@@ -13,17 +14,24 @@ Plug 'fholgado/minibufexpl.vim'
 Plug 'majutsushi/tagbar'
 "Plug 'davidhalter/jedi-vim'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/local_vimrc'
 Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
 Plug 'plytophogy/vim-virtualenv'
 "Plug 'sjl/gundo.vim'
 "Plug 'spiiph/vim-space'
 "Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline'
-"Plug 'altercation/vim-colors-solarized'
-"Plug 'tomasr/molokai'
-Plug 'sickill/vim-monokai'
-Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/vim-tomorrow-theme'
 "Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Yggdroot/indentLine'
 "Plug 'hynek/vim-python-pep8-indent'
@@ -40,17 +48,7 @@ Plug 'Tuxdude/mark.vim'
 "Plug 'matchit.zip'
 call plug#end()
 
-if has("gui_running")
-    colorscheme solarized
-    set background=light
-    "colorscheme molokai
-"else
-"    "colorscheme molokai
-"    colorscheme solarized
-"    set background=light
-"    let g:rehash256=1
-"    let g:molokai_original=1
-endif
+colorscheme Tomorrow-Night
 
 let g:solarized_termcolors=256
 
@@ -77,9 +75,16 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"
+"let g:syntastic_python_checkers = ['pylint']
 
-let g:syntastic_python_checkers = ['pylint']
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+let g:ale_linters = {'c': ['gcc']}
+let g:ale_open_list = 1
+let g:ale_list_window_size = 3
