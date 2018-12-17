@@ -1,12 +1,12 @@
-Font=DejaVu Sans Mono for Powerline
+Font=DejaVu Sans Mono
 FontHeight=11
 CursorType=block
 Charset=UTF-8
-Locale=zh_CN
+Locale=C
 
-ForegroundColour=101,123,131
-BackgroundColour=253,246,227
-CursorColour=220,50,47
+ForegroundColour=77,77,76
+BackgroundColour=255,255,255
+CursorColour=77,77,76
 
 # Solarized
 #Black=7,54,66
@@ -28,9 +28,6 @@ CursorColour=220,50,47
 #BoldAsFont=-1
 
 # Tomorrow
-ForegroundColour=77,77,76
-BackgroundColour=255,255,255
-CursorColour=77,77,76
 Black=255,255,255
 BoldBlack=142,144,140
 Red=200,40,41
@@ -48,3 +45,5 @@ BoldCyan=163,104,90
 White=77,77,76
 BoldWhite=29,31,33
 
+BoldAsFont=-1
+FontWeight=400
