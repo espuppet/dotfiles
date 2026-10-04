@@ -1,0 +1,16 @@
+{
+  "lastChangelogVersion": "1.0.2",
+  "theme": "light",
+  "defaultTools": [
+    "+codemode"
+  ],
+  "tuiMode": "regular",
+  "defaultProvider": "cliproxy",
+  "defaultModel": "gemini-3.8-flash-high",
+  "defaultThinkingLevel": "high",
+  "packages": [
+    "npm:pi-web-access",
+    "npm:pi-subagents",
+    "npm:context-mode"
+  ]
+}

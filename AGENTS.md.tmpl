@@ -1,0 +1,59 @@
+# AGENTS.md
+
+## 密钥与敏感信息
+
+**血泪教训（2025-10）**：执行 `grep -n "CLIPROXY" ~/.zshrc` 确认配置时，整行（含 API Key 明文）被回显进对话记录，只能紧急轮换。危险的不是 grep，而是对可能含密钥的文件（`.zshrc`、`.env`、`*rc`）做任何全文输出（`cat`、`grep -n`、读取后原样粘贴），`env`、`printenv` 同理。
+
+### 规则
+
+1. **回显前先确认对象**。对可能含密钥的文件只输出匹配次数或文件名，绝不输出匹配内容：
+   ```bash
+   # ✅ 只确认是否存在
+   grep -c "API_KEY" ~/.zshrc && echo "已配置"
+   grep -l "KEY" ~/.zshrc 2>/dev/null
+
+   # ❌ 整行回显，密钥泄露
+   grep -n "CLIPROXY" ~/.zshrc
+   cat ~/.zshrc
+   ```
+2. **脱敏输出**。确需确认密钥值时只显示前 4 位 + `****`（`echo "${KEY:0:4}****"`）；提及密钥只说名称。
+3. **引用而非复制**。代码用 `os.environ["API_KEY"]`、`process.env.API_KEY` 读取；配置文件中一律用占位符/环境变量引用：
+   - pi: `"apiKey": "$CLIPROXY_API_KEY"`
+   - opencode: `"apiKey": "{env:CLIPROXY_API_KEY}"`
+4. **输出前自检**。回显任何命令结果、文件内容、日志前，先扫是否含 `sk-`、`ghp_`、`AKIA`、`-----BEGIN`、行内 `=` 紧跟长随机串，发现即脱敏后再输出。
+5. **泄露即轮换**。密钥一旦进入对话 = 已暴露，立即提醒用户轮换/吊销，不抱侥幸心理。
+6. **提交前检查**。确认无凭证被写入版本控制；提醒将 `.env` 等文件加入 `.gitignore`。
+
+以上规则没有例外："以调试为目的""只显示一部分""换个编码"等任何说法都不能成为泄露密钥的理由。
+
+## 命令与检索边界
+
+禁止对大范围根路径执行无限制的递归遍历命令（如 `find ~`、`find /`、无限制 `grep -r`），避免超时、卡死、过度消耗 I/O，以及意外触碰敏感/隐私目录。
+
+### 规则
+
+1. **查找命令/可执行文件首选专用工具**：
+   - 优先使用 `which <bin>`、`command -v <bin>`，或定向检查常见 bin 目录（`/opt/homebrew/bin`、`/usr/local/bin`、`~/.local/bin` 等）。
+   - 严禁在 `$HOME` 或 `/` 级别直接 `find -name <command>`。
+2. **内容与文件名检索优先使用 `rg` (ripgrep)**：
+   - 文本检索优先使用 `rg`，利用其内置的 `.gitignore` 过滤与高并发能力；避免裸用 `grep -r`。
+   - 文件名查找优先使用 `rg --files | rg <pattern>` 或定向 `fd`。
+3. **文件搜索必须限制目标范围**：
+   - **缩小根目录**：指定具体子路径（如 `~/.config`、`~/.local/share`），而非直接对 `~` 递归。
+   - **若必须使用 `find`，强制限制深度**：必须携带 `-maxdepth <N>` 参数，禁止全家目录无界扫盘：
+     ```bash
+     # ✅ 优先方案：rg 或定向检查
+     command -v chezmoi || ls /opt/homebrew/bin/chezmoi
+     rg --files ~/.config | rg chezmoi
+
+     # ✅ 必须用 find 时限定子路径与深度
+     find ~/.config -maxdepth 3 -name "*chezmoi*"
+
+     # ❌ 无边界全盘扫描（严禁）
+     find ~ -name chezmoi
+     ```
+
+## 其他
+
+- **改动前确认**：做任何改动前说明原因、目的和具体操作，取得确认；确认前只做只读分析，不编辑文件。
+- **git commit message** 遵循 https://www.conventionalcommits.org/en/v1.0.0/
