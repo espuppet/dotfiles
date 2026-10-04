@@ -5,12 +5,14 @@
     "+codemode"
   ],
   "tuiMode": "regular",
-  "defaultProvider": "cliproxy",
-  "defaultModel": "gemini-3.8-flash-high",
+  "externalEditor": "nvim",
+  "defaultProvider": "kimi-coding",
+  "defaultModel": "kimi-for-coding",
   "defaultThinkingLevel": "high",
   "packages": [
     "npm:pi-web-access",
     "npm:pi-subagents",
+    "npm:@dietrichgebert/ponytail",
     "npm:context-mode"
   ]
 }
